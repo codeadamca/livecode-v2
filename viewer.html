@@ -78,38 +78,9 @@
 
   <div id="step-1">
 
-    <div id="step-1-box"></div>
+    <div id="step-1-box">TEST</div>
 
   </div>
-
-  <script>
-
-  const step1Box = document.getElementById("step-1-box");
-
-  window.onload = (e) => {
-
-    fetch('https://console.codeadam.ca/api/livecode/users')
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(value => {  
-          step1Box.innerHTML += '<a href="' + 
-            '/' + 
-            value.github + 
-            '"><img src="' + 
-            value.image + 
-            '">' + 
-            '<br>' + 
-            ( value.display ? value.display : value.github ) +
-            '<br>' + 
-            value.status + 
-            '</a>';
-            
-        });
-      });
-
-  };
-
-  </script>
 
 </body>
 </html>
