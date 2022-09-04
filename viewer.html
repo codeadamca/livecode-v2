@@ -51,6 +51,13 @@
     z-index: 10000;
     font-family: Arial, Helvetica, sans-serif;
   }
+  #refresh {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 30px;
+    padding: 15px;
+  }
 
   a:link,
   a:hover,
@@ -71,9 +78,17 @@
 <body>
 
   <div id="codeadam">
-    <a href="https://github.com/codeadamca/pages-list"><i class="fab fa-github"></i></a>
+    <a href="https://pages.codeadam.ca"><i class="fas fa-bars"></i></a>
+    &nbsp;
+    <a href="https://github.com/codeadamca/livecode-v2"><i class="fab fa-github"></i></a>
     &nbsp;
     <a href="https://codeadam.ca"><img src="https://codeadam.ca/images/code-block-white.png" width="30"></a>
+  </div>
+
+  <div id="refresh">
+    <a href="/"><i class="fas fa-redo"></i></a>
+    &nbsp;
+    <a href="/about"><i class="fas fa-question"></i></a>
   </div>
 
   <div id="step-1">
