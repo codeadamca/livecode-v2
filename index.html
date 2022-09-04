@@ -88,15 +88,22 @@
 
   window.onload = (e) => {
 
-    fetch('https://console.codeadam.ca/api/assignments')
+    fetch('https://console.codeadam.ca/api/livecode/users')
       .then(response => response.json())
       .then(data => {
         data.forEach(value => {  
           step1Box.innerHTML += '<a href="' + 
-            value.url + 
+            '/' + 
+            value.github + 
             '"><img src="' + 
             value.image + 
-            '"></a>';
+            '">' + 
+            '<br>' + 
+            ( value.display ? value.display : value.github ) +
+            '<br>' + 
+            value.file_updated_at + 
+            '</a>';
+            
         });
       });
 
