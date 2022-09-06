@@ -94,6 +94,11 @@
           let extension = data[key].path.split('.').pop();
           let filename = data[key].path.split('/').pop();
 
+          if( !icon[extension] )
+          {
+            icon[extension] = '<i class="fas fa-file"></i>';
+          }
+          
           // Add a button for each tab
           let button = document.createElement('button');
           button.innerHTML = icon[extension] + ' ' + filename;
