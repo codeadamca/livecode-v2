@@ -24,6 +24,10 @@ body {
     margin: 0.4vw;
 }
 
+.coder {
+    display: inline-block;
+}
+
 #codeadam {
     position: fixed;
     bottom: 0;

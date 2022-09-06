@@ -49,17 +49,20 @@
       .then(response => response.json())
       .then(data => {
         data.forEach(value => {  
-          step1Box.innerHTML += '<a href="' + 
-            '/' + 
-            value.github + 
-            '"><img src="' + 
-            value.image + 
-            '">' + 
-            '<br>' + 
-            ( value.display ? value.display : value.github ) +
-            '<br>' + 
-            value.status + 
-            '</a>';
+          
+          step1Box.innerHTML += '<div class="coder">' +
+            '<a href="' + 
+              '/' + 
+              value.github + 
+              '"><img src="' + 
+              value.image + 
+              '">' + 
+              '<br>' + 
+              ( value.display ? value.display : value.github ) +
+              '<br>' + 
+              value.status + 
+            '</a>' + 
+            '</div>';
             
         });
       });
