@@ -1,4 +1,4 @@
-# The LiveCode V2 VSCode Extension
+# Viewer for the LiveCode V2 VSCode Extension
 
 The second version of the viewer for the LiveCode VSCode extension.
 
