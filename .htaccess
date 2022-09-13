@@ -6,3 +6,5 @@ RewriteRule ^(.+?)/?$ $1.html [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^.*$ /viewer.html [L,QSA]
+
+RedirectMatch 301 ^/code.html /
