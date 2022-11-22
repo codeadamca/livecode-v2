@@ -70,8 +70,13 @@
               '<br>' + 
               ( value.github ? value.github : value.display ) +
               '<br>' + 
-              value.status + 
+              '<i class="fas fa-code"></i>' + 
             '</a>' + 
+            ( value.github && value.github != 'anonymous' ? ' <a href="https://github.com/' + value.github + '"><i class="fab fa-github"></i></a>' : '' ) +
+            '<br>' + 
+            '<small>' + 
+              value.status + 
+            '</small>' + 
             '</div>';
             
         });
