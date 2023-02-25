@@ -37,6 +37,7 @@ body {
     z-index: 10000;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 #refresh {
     position: fixed;
     bottom: 0;

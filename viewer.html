@@ -30,6 +30,8 @@
 
   <script>
   
+  let status = 'on';
+
   function selectTab(event, tab) {
 
     selectedPath = tab;
@@ -74,10 +76,25 @@
   let lastUpdated = Math.floor(new Date().getTime() / 1000);
   let username = window.location.href.split('/').pop();
 
-  setInterval('resetTabs(false);', 2500);
+  setInterval('resetTabs(false);', 3000);
   
+  function startSync()
+  {
+    let sync = document.getElementById('sync');
+    sync.style.display = 'inline';
+  }
+
+  function stopSync()
+  {
+    let sync = document.getElementById('sync');
+    sync.style.display = 'none';
+  }
+
   function resetTabs(initialize) { 
   
+    if(status == 'off') return;
+
+    startSync();
     
     // Fetch the updated path json
     fetch('https://console.codeadam.ca/api/livecode/code?github=' + username).then(function (response) {
@@ -169,17 +186,76 @@
         document.getElementById('tabButtons').innerHTML = '';
         document.getElementById('tabContent').innerHTML = '';
       }
+
+      setTimeout(stopSync, 1000);
+      
       
     }).catch(function (err) {
 
       // console.warn('Something went wrong.', err);
+
+      stopSync();
 
     });
     
   }
   
   window.onload = function(e) {
+
     resetTabs(true);
+
+    let copy = document.getElementById('copy');
+    copy.addEventListener('click', function(e){
+
+      let codeToCopy = '';
+
+      let tabContent = document.getElementsByClassName('tabcontent');
+      for(let i = 0; i < tabContent.length; i ++)
+      {
+        if(tabContent[i].style.display == 'block')
+        {
+          
+          tabContent[i].setAttribute('id', 'copyThis');
+
+          var r = document.createRange();
+          r.selectNode(document.getElementById('copyThis'));
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(r);
+          document.execCommand('copy');
+          window.getSelection().removeAllRanges();
+
+          tabContent[i].removeAttribute('id');
+
+        }
+      }
+
+      e.preventDefault();
+
+    });
+
+
+    let toggle = document.getElementById('toggle');
+    toggle.addEventListener('click', function(e){
+
+      let buttons = document.querySelectorAll('#toggle i');
+      
+      if(status == 'on')
+      {
+        status = 'off';
+        buttons[0].style.display = 'none';
+        buttons[1].style.display = 'inline';
+      }
+      else
+      {
+        status = 'on';
+        buttons[0].style.display = 'inline';
+        buttons[1].style.display = 'none';
+      }
+
+      e.preventDefault();
+
+    });
+
   };
   
   </script>
@@ -239,6 +315,14 @@
     background: none !important;
   }
 
+  #toggle i:nth-child(2) {
+    display: none;
+  }
+
+  #sync {
+    display: none;
+  }
+
   </style>
 
 </head>
@@ -265,6 +349,15 @@
     <a href="/"><i class="fas fa-redo"></i></a>
     &nbsp;
     <a href="/about"><i class="fas fa-question"></i></a>
+    &nbsp;
+    <a href="#" id="copy"><i class="fas fa-copy"></i></a>
+    &nbsp;
+    <a href="#" id="toggle">
+      <i class="fas fa-toggle-on"></i>
+      <i class="fas fa-toggle-off"></i>
+    </a>
+    &nbsp;
+    <i class="fas fa-sync fa-spin" id="sync"></i>
   </div>
 
   <!--
