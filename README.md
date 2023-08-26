@@ -2,7 +2,9 @@
 
 The second version of the viewer for the LiveCode VSCode extension.
 
-## Tutorial Requirements:
+***
+
+## Repo Resources
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Livecode Extension](https://marketplace.visualstudio.com/items?itemName=CodeAdamCa.livecode)
